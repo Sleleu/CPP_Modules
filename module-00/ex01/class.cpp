@@ -6,11 +6,10 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:59:36 by sleleu            #+#    #+#             */
-/*   Updated: 2022/10/21 19:14:44 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/10/21 22:39:47 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
 #include <cstring>
 #include <iostream>
 #include "phonebook.hpp"
@@ -19,11 +18,7 @@
 
 Contact::Contact(void)
 {
-	bzero(this->first_name, 10);
-	bzero(this->last_name, 10);
-	bzero(this->nickname, 10);
-	bzero(this->_phone_number, 10);
-	bzero(this->_secret, 100);
+	return ;
 }
 
 // DESTRUCTOR
@@ -37,9 +32,23 @@ Contact::~Contact(void)
 
 void	Contact::getSecret(void) const
 {
-	std::cout << this->_secret << std::endl;
-
+	std::cout << "Darkest secret -> " << this->_secret << std::endl;
 	return ;
+}
+
+void	Contact::getNumber(void) const
+{
+	std::cout << "Phone number -> " << this->_phone_number << std::endl;
+	return ;
+}
+
+void	Contact::resetContact(void)
+{
+	bzero(this->first_name, 10);
+	bzero(this->last_name, 10);
+	bzero(this->nickname, 10);
+	bzero(this->_phone_number, 10);
+	bzero(this->_secret, 100);
 }
 
 // SETTER
@@ -47,14 +56,12 @@ void	Contact::getSecret(void) const
 void	Contact::setSecret(std::string buffer)
 {
 	buffer.copy(_secret, buffer.size(), 0);
-
 	return ;
 }
 
 void	Contact::setNumber(std::string buffer)
 {
 	buffer.copy(_phone_number, buffer.size(), 0);
-	
 	return ;
 }
 

@@ -6,14 +6,13 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 21:15:36 by sleleu            #+#    #+#             */
-/*   Updated: 2022/10/21 19:14:53 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/10/21 23:10:45 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-#include <string>
 #include <cstring>
 #include <iostream>
 
@@ -22,12 +21,14 @@ class Contact
 	public:
 
 		int		index;
-		char	first_name[11];
-		char	last_name[11];
-		char	nickname[11];
+		char	first_name[101];
+		char	last_name[101];
+		char	nickname[101];
 		void	setSecret(std::string buffer);
 		void	setNumber(std::string buffer);
+		void	resetContact(void);
 		void	getSecret(void) const;
+		void	getNumber(void) const;
 
 		Contact(void);
 		~Contact(void);
@@ -35,7 +36,7 @@ class Contact
 	private:
 
 		char _secret[101];
-		char _phone_number[11];
+		char _phone_number[101];
 };
 
 class PhoneBook

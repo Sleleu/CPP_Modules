@@ -6,13 +6,14 @@
 #    By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 21:12:40 by sleleu            #+#    #+#              #
-#    Updated: 2022/10/19 21:12:42 by sleleu           ###   ########.fr        #
+#    Updated: 2022/10/21 19:15:53 by sleleu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = phonebook
 
-SRC = main.cpp
+SRC = main.cpp \
+	  class.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

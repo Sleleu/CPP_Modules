@@ -6,20 +6,20 @@
 #    By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 21:12:40 by sleleu            #+#    #+#              #
-#    Updated: 2022/10/24 18:27:34 by sleleu           ###   ########.fr        #
+#    Updated: 2022/10/25 18:07:26 by sleleu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
+NAME = account
 
-SRC = main.cpp \
-	  Contact.cpp \
+SRC = Account.cpp \
+	  tests.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -std=c++98
 
 all: $(NAME)
 

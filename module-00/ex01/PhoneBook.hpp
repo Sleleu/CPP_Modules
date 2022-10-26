@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 21:15:36 by sleleu            #+#    #+#             */
-/*   Updated: 2022/10/21 23:10:45 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/10/24 18:26:57 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,10 @@
 # define PHONEBOOK_HPP
 
 #include <cstring>
+#include <string>
 #include <iostream>
-
-class Contact
-{
-	public:
-
-		int		index;
-		char	first_name[101];
-		char	last_name[101];
-		char	nickname[101];
-		void	setSecret(std::string buffer);
-		void	setNumber(std::string buffer);
-		void	resetContact(void);
-		void	getSecret(void) const;
-		void	getNumber(void) const;
-
-		Contact(void);
-		~Contact(void);
-		
-	private:
-
-		char _secret[101];
-		char _phone_number[101];
-};
+#include <cstdio>
+#include "Contact.hpp"
 
 class PhoneBook
 {

@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/29 19:58:13 by sleleu            #+#    #+#             */
-/*   Updated: 2022/10/29 21:41:07 by sleleu           ###   ########.fr       */
+/*   Created: 2022/10/30 20:23:33 by sleleu            #+#    #+#             */
+/*   Updated: 2022/10/30 21:08:53 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fstream>
 #include <string>
-#include "Weapon.hpp"
+#include <iostream>
 
-#ifndef HUMANB_HPP
-# define HUMANB_HPP
-
-class HumanB
+int	main(int argc, char **argv)
 {
+	std::string		buffer;
+	std::fstream	src;
+	std::ofstream	dest("test.replace");
 
-	public:
-
-		void	attack(void) const;
-		void	setWeapon(Weapon weapon);
-
-		HumanB(std::string name);
+	if (argc != 4)
+	{
+		std::cout << "Bad arguments" << std::endl;
+		return (1);
+	}
+	src.open(argv[1]);
+	if (!src.is_open())
+	{
+		std::cout << "File does not exist" << std::endl;
+		return (1);
+	}
+	while (getline(src, buffer))
+	{
 		
-	private:
-	
-		std::string _name;
-		Weapon *_weapon;
-};
-
-#endif
+		dest << src;
+	}
+	src.close();
+	return (0);
+}

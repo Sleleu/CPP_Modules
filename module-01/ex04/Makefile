@@ -6,16 +6,13 @@
 #    By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 21:12:40 by sleleu            #+#    #+#              #
-#    Updated: 2022/10/29 19:52:43 by sleleu           ###   ########.fr        #
+#    Updated: 2022/10/29 21:45:50 by sleleu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = weapon
+NAME = sed
 
 SRC = main.cpp \
-	  HumanA.cpp \
-	  HumanB.cpp \
-	  Weapon.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleleu <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 20:23:33 by sleleu            #+#    #+#             */
-/*   Updated: 2022/10/31 00:33:33 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/10/31 15:54:10 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fstream>
 #include <string>
+#include <cstring>
 #include <iostream>
 
 int	main(int argc, char **argv)
@@ -25,32 +26,30 @@ int	main(int argc, char **argv)
 		std::cout << "Bad usage : [filename] [target] [replace]" << std::endl;
 		return (1);
 	}
-	std::ifstream	src(argv[1]);	
-	std::string 	name_dest = argv[1];
-	name_dest.append(".replace");
+	std::ifstream	src(argv[1]);
 	if (!src.is_open())
 	{
 		std::cout << "File does not exist" << std::endl;
 		return (1);
 	}
-	std::ofstream	dest(name_dest);
+	std::string		target = argv[2];
+	std::string		to_insert = argv[3];
+	std::ofstream	dest(strcat(argv[1], ".replace"));
 	if (!dest.is_open())
 		return (1);
+	int pos = 0;
 	while (getline(src, buffer))
 	{
-		size_t pos = 0;
-		while ((pos = buffer.find(argv[2])) != std::string::npos)
+		while ((pos = buffer.find(target)) >= 0)
 		{
-			tmp = buffer.substr(0, buffer.find(argv[2])); // move to the occurrence
-			line = line.append(tmp + argv[3]); // append to_insert in the line with content before occurrence
-			buffer = buffer.substr(pos + strlen(argv[2])); // move in the buffer after the current occurrence
-														   // to find the next occurrence
-			//std::cout << tmp << "||" << line << "||" << buffer << std::endl;
+			tmp = buffer.substr(0, buffer.find(target));
+			line = line.append(tmp + to_insert);
+			buffer = buffer.substr(pos + target.size());
 		}
-		line.append(buffer); // append the rest of the line if there is not occurrence left
+		line.append(buffer);
 		dest << line;
 		line.clear();
-		if (!src.eof()) // if we find and eof, we dont endl
+		if (!src.eof())
 			dest << std::endl;
 	}
 	src.close();

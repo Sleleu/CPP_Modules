@@ -5,14 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/19 21:12:40 by sleleu            #+#    #+#              #
-#    Updated: 2022/10/31 15:56:36 by sleleu           ###   ########.fr        #
+#    Created: 2022/10/31 01:01:21 by sleleu            #+#    #+#              #
+#    Updated: 2022/10/31 15:58:15 by sleleu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = sed
+NAME = HarlFilter
 
 SRC = main.cpp \
+	  Harl.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

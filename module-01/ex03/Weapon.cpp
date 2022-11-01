@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 19:55:25 by sleleu            #+#    #+#             */
-/*   Updated: 2022/10/29 21:35:39 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/10/31 18:56:13 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Weapon::Weapon(std::string type)
 	setType(type);
 }
 
-std::string	Weapon::getType(void) const
+const std::string&	Weapon::getType(void) const
 {
 	return (this->_type);
 }

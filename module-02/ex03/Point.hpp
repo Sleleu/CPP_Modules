@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 21:42:46 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/07 22:06:18 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/08 15:35:58 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,17 @@ class Point
 
 	// Member functions
 
-		Fixed	getPointX();
-		Fixed	getPointY();
+		Fixed	getPointX() const;
+		Fixed	getPointY() const;
 
 	private:
 	
 	class Fixed _x;
 	class Fixed	_y;
 };
+
+std::ostream & operator<<(std::ostream & o, Point const & i);
+
+bool	bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif

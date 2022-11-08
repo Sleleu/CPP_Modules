@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 21:48:08 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/07 22:05:59 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/08 15:42:32 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,25 @@
 
 Point::Point(void) : _x(0), _y(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	//std::cout << "Default constructor called" << std::endl;
 }
 
 Point::Point(const float fixed_x, const float fixed_y) : _x(fixed_x), _y(fixed_y)
 {
-	std::cout << "Const float constructor called" << std::endl;
+	//std::cout << "Const float constructor called" << std::endl;
 	return ;
 }
 
 Point::Point(const Point &src)
 {
-	std::cout << "Copy constructor called" << std::endl;
-	_x = src._x.getRawBits();
-	_y = src._y.getRawBits();
+	//std::cout << "Copy constructor called" << std::endl;
+	_x = src._x.toFloat();
+	_y = src._y.toFloat();
 }
 
 Point::~Point()
 {
-	std::cout << "Destructor called" << std::endl;
+	//std::cout << "Destructor called" << std::endl;
 }
 
 Point & Point::operator=(Point const &rhs)
@@ -43,12 +43,18 @@ Point & Point::operator=(Point const &rhs)
 	return (*this);
 }
 
-Fixed	Point::getPointX()
+std::ostream & operator<<(std::ostream &o, Point const &i)
+{
+	o << i.getPointX() << "," << i.getPointY();
+	return (o);
+}
+
+Fixed	Point::getPointX() const
 {
 	return (_x);
 }
 
-Fixed	Point::getPointY()
+Fixed	Point::getPointY() const
 {
 	return (_y);
 }

@@ -6,11 +6,11 @@
 #    By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:22:54 by sleleu            #+#    #+#              #
-#    Updated: 2022/11/07 21:40:34 by sleleu           ###   ########.fr        #
+#    Updated: 2022/11/07 22:41:29 by sleleu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fixed
+NAME = bsp
 
 SRC = main.cpp \
 	  Fixed.cpp \

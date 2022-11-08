@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:30:00 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/07 21:38:17 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/08 16:49:58 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ int main( void )
 	if (c != b)
 		std::cout << "operator overloading for different comparison : " << "c is different to b" << std::endl;
 	std::cout << "Test member function min : " << Fixed::min(c, b) << std::endl;
-return 0;
+
+	return (0);
 }

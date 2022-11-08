@@ -6,12 +6,14 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 21:48:08 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/08 15:42:32 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/08 16:49:20 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include "Point.hpp"
+
+// CONSTRUCTORS
 
 Point::Point(void) : _x(0), _y(0)
 {
@@ -31,10 +33,14 @@ Point::Point(const Point &src)
 	_y = src._y.toFloat();
 }
 
+// DESTRUCTOR
+
 Point::~Point()
 {
 	//std::cout << "Destructor called" << std::endl;
 }
+
+// OVERLOAD OPERATORS
 
 Point & Point::operator=(Point const &rhs)
 {
@@ -48,6 +54,8 @@ std::ostream & operator<<(std::ostream &o, Point const &i)
 	o << i.getPointX() << "," << i.getPointY();
 	return (o);
 }
+
+// MEMBER FUNCTIONS
 
 Fixed	Point::getPointX() const
 {

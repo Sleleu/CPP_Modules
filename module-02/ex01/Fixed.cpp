@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:37:11 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/07 20:51:40 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/08 16:49:34 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,12 @@ Fixed::Fixed(const Fixed &src)
 Fixed::Fixed(int i)
 {
 	std::cout << "Int constructor called" << std::endl;
-	//_n = (i * (1 << _bits));
 	_n = i * pow(2, _bits);
 }
 
 Fixed::Fixed(float f)
 {
 	std::cout << "Float constructor called" << std::endl;
-	//_n = roundf(f * (1 << _bits));
 	_n = roundf(f * pow(2, _bits));
 }
 
@@ -69,13 +67,11 @@ std::ostream & operator<<(std::ostream &o, Fixed const &i)
 float	Fixed::toFloat(void) const
 {
 	return (((float)_n / pow(2, _bits)));
-    //return((_n / (float)(1 << _bits)));
 }
 
 int		Fixed::toInt(void) const
 {
 	return (((int)_n / pow(2, _bits)));
-	//return (_n >> _bits);
 }
 
 int	Fixed::getRawBits(void) const

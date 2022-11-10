@@ -6,18 +6,23 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:11:48 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/09 21:31:38 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/10 19:38:09 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "ClapTrap.hpp"
+ #include "ScavTrap.hpp"
+ #include "ClapTrap.hpp"
+ #include "FragTrap.hpp"
+ #include "DiamondTrap.hpp"
 
 // CONSTRUCTORS
 
 ScavTrap::ScavTrap()
 {
 	std::cout << "ScavTrap default constructor called" << std::endl;
+	this->_hp = 100;
+	this->_mp = 50;
+	this->_atk = 20;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &src) : ClapTrap(src)
@@ -31,7 +36,10 @@ ScavTrap::ScavTrap(const ScavTrap &src) : ClapTrap(src)
 ScavTrap::ScavTrap(const std::string name)
 {
 	std::cout << "ScavTrap name constructor called" << std::endl;
-	_name = name;
+	this->_name = name;
+	this->_hp = 100;
+	this->_mp = 50;
+	this->_atk = 20;
 }
 
 // DESTRUCTOR

@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:19:17 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/09 21:32:06 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/10 17:08:04 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #ifndef FRAGTRAP_HPP
 # define FRAGTRAP_HPP
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
 	public:
 		FragTrap();

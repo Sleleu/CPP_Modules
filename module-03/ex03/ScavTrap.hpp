@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:19:17 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/09 21:31:46 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/10 16:59:20 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 
-class ScavTrap : public ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
 	public:
 		ScavTrap();

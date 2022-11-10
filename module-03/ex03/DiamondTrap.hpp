@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 20:19:17 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/09 21:36:41 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/10 16:59:04 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #ifndef DIAMONDTRAP_HPP
 # define DIAMONDTRAP_HPP
 
-class DiamondTrap : public ScavTrap, public FragTrap
+class DiamondTrap : virtual public ScavTrap, virtual public FragTrap
 {
 	public:
 		DiamondTrap();

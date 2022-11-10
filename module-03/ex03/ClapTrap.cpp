@@ -6,11 +6,14 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:36:01 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/09 21:32:29 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/10 17:17:38 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+ #include "ScavTrap.hpp"
+ #include "ClapTrap.hpp"
+ #include "FragTrap.hpp"
+ #include "DiamondTrap.hpp"
 
 // CONSTRUCTORS
 
@@ -18,9 +21,9 @@ ClapTrap::ClapTrap()
 {
 	std::cout << "ClapTrap default constructor called" << std::endl;
 	this->_name = "unamed";
-	this->_hp = 100;
-	this->_mp = 50;
-	this->_atk = 20;
+	this->_hp = 10;
+	this->_mp = 10;
+	this->_atk = 0;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &src)
@@ -35,9 +38,9 @@ ClapTrap::ClapTrap(const std::string name)
 {
 	std::cout << "ClapTrap name constructor called" << std::endl;
 	_name = name;
-	this->_hp = 100;
-	this->_mp = 50;
-	this->_atk = 20;
+	this->_hp = 10;
+	this->_mp = 10;
+	this->_atk = 0;
 }
 
 // DESTRUCTOR

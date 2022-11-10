@@ -6,21 +6,22 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:10:45 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/09 21:32:12 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/10 17:41:43 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
-#include "ClapTrap.hpp"
+ #include "ScavTrap.hpp"
+ #include "ClapTrap.hpp"
+ #include "FragTrap.hpp"
+ #include "DiamondTrap.hpp"
 
 // CONSTRUCTORS
 
 FragTrap::FragTrap()
 {
 	std::cout << "FragTrap default constructor called" << std::endl;
-	_hp = 100;
-	_mp = 100;
-	_atk = 30;
+	this->_hp = 100;
+	this->_atk = 30;
 }
 
 FragTrap::FragTrap(const FragTrap &src) : ClapTrap(src)
@@ -34,10 +35,9 @@ FragTrap::FragTrap(const FragTrap &src) : ClapTrap(src)
 FragTrap::FragTrap(const std::string name)
 {
 	std::cout << "FragTrap name constructor called" << std::endl;
-	_name = name;
-	_hp = 100;
-	_mp = 100;
-	_atk = 30;
+	this->_name = name;
+	this->_hp = 100;
+	this->_atk = 30;
 }
 
 // DESTRUCTOR

@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 20:15:01 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/11 16:40:46 by sleleu           ###   ########.fr       */
+/*   Created: 2022/11/11 16:13:15 by sleleu            #+#    #+#             */
+/*   Updated: 2022/11/11 16:35:56 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
 #include "Brain.hpp"
 
-#ifndef DOG_HPP
-# define DOG_HPP
+// CONSTRUCTORS
 
-
-class Dog : public Animal
+Brain::Brain()
 {
-	public:
-		Dog();
-		Dog(const Dog &src);
-		~Dog();
-		Dog&		operator=(const Dog &rhs);
-		std::string	getType(void) const;
-		void		makeSound() const;
+	std::cout << "Brain default constructor called" << std::endl;
+}
 
-		protected:
-			std::string type;
-		
-		private:
-			Brain *_brain;
-};
+Brain::Brain(const Brain &src)
+{
+	std::cout << "Brain copy constructor called" << std::endl;
+	*this = src; 
+}
 
-#endif
+// DESTRUCTOR
+
+Brain::~Brain()
+{
+	std::cout << "Brain destructor called" << std::endl;
+}
+
+// OVERLOAD OPERATOR
+
+Brain& Brain::operator=(const Brain &rhs)
+{
+	*this->ideas = *rhs.ideas;
+	return (*this);
+}

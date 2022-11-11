@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 20:15:01 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/10 20:41:39 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/11 15:01:14 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@ class Cat : public Animal
 		Cat();
 		Cat(const Cat &src);
 		~Cat();
-		Cat& operator=(const Cat &rhs);
-		void makeSound();
+		Cat& 		operator=(const Cat &rhs);
+		std::string	getType(void) const;
+		void 		makeSound() const;
+		
+		protected:
+			std::string type;
 };
 
 #endif

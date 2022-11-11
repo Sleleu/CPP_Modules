@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 20:10:09 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/10 20:52:05 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/11 15:24:02 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@ class Animal
 	public:
 		Animal();
 		Animal(const Animal &src);
-		~Animal();
+		virtual ~Animal();
 
-		Animal& operator=(const Animal &rhs);
-		void makeSound();
+		Animal& 	operator=(const Animal &rhs);
+
+		virtual void		makeSound() const;
+		virtual std::string	getType(void) const;
+
 	protected:
 		std::string type;
 };

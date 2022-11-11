@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 20:31:24 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/11 16:33:16 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/11 17:09:27 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,6 @@ Animal& Animal::operator=(const Animal &rhs)
 }
 
 // MEMBER FUNCTION
-
-void	Animal::makeSound() const
-{
-	std::cout << "Animal say : Brrrbrrrrr" << std::endl;
-}
 
 std::string	Animal::getType(void) const
 {

@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 20:31:24 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/10 20:42:38 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/11 16:34:33 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 Dog::Dog()
 {
 	std::cout << "Dog default constructor called" << std::endl;
+	this->type = "Dog";
 }
 
 Dog::Dog(const Dog &src) : Animal(src)
@@ -37,14 +38,17 @@ Dog::~Dog()
 
 Dog& Dog::operator=(const Dog &rhs)
 {
-	*this = rhs;
-	
+	this->type = rhs.type;
 	return (*this);
 }
 
 // MEMBER FUNCTION
 
-void	Dog::makeSound(void)
+void	Dog::makeSound(void) const
 {
 	std::cout << "Dog say : Wouaf" << std::endl;
+}
+std::string	Dog::getType(void) const
+{
+	return (this->type);
 }

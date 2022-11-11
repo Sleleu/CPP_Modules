@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 20:31:24 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/10 20:42:43 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/11 16:34:26 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 Cat::Cat()
 {
 	std::cout << "Cat default constructor called" << std::endl;
+	this->type = "Cat";
 }
 
 Cat::Cat(const Cat &src) : Animal(src)
@@ -37,14 +38,18 @@ Cat::~Cat()
 
 Cat& Cat::operator=(const Cat &rhs)
 {
-	*this = rhs;
-	
+	this->type = rhs.type;
 	return (*this);
 }
 
 // MEMBER FUNCTION
 
-void	Cat::makeSound(void)
+void	Cat::makeSound(void) const
 {
 	std::cout << "Cat say : Meow" << std::endl;
+}
+
+std::string	Cat::getType(void) const
+{
+	return (this->type);
 }

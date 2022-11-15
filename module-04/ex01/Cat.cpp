@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 20:31:24 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/11 16:52:08 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/15 16:54:58 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ Cat::Cat()
 Cat::Cat(const Cat &src) : Animal(src)
 {
 	std::cout << "Cat copy constructor called" << std::endl;
-	*this = src;
+	this->type = src.type;
+	this->_brain = new Brain();
+	for (int i = 0; i < 100; i++)
+		this->_brain->setIdeas(src._brain->getIdeas(i), i);
 }
 
 // DESTRUCTOR
@@ -41,7 +44,8 @@ Cat::~Cat()
 Cat& Cat::operator=(const Cat &rhs)
 {
 	this->type = rhs.type;
-	this->_brain = rhs._brain;
+	for (int i = 0; i < 100; i++)
+		this->_brain->setIdeas(rhs._brain->getIdeas(i), i);
 	return (*this);
 }
 
@@ -55,4 +59,15 @@ void	Cat::makeSound(void) const
 std::string	Cat::getType(void) const
 {
 	return (this->type);
+}
+
+void	Cat::getIdeas(int i) const
+{
+	std::cout << _brain->getIdeas(i) << std::endl;
+}
+
+void	Cat::setIdeas(std::string str, int i)
+{
+	if (i >= 0 && i < 100)
+		_brain->setIdeas(str, i);
 }

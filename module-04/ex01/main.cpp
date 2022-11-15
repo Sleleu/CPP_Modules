@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 20:09:25 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/11 17:05:58 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/15 17:00:56 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,20 @@ int main()
 		array[i]->makeSound();
 	for (int i = 0; i < 4; i++)
 		delete array[i];
+
+	Dog dog1;
+	std::cout << "TEST IDEAS" << std::endl;
+	dog1.setIdeas("i like eat", 0);
+	
+	Dog dog2 = Dog(dog1);
+	dog1.getIdeas(0);
+	dog2.getIdeas(0);
+
+	std::cout << "copy test : " << std::endl;
+	dog1.setIdeas("i dont like eat anymore", 0);
+	dog1.getIdeas(0);
+	dog2.getIdeas(0);
+	std::cout << std::endl;
+
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:13:15 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/11 16:35:56 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/15 16:49:00 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ Brain::Brain()
 Brain::Brain(const Brain &src)
 {
 	std::cout << "Brain copy constructor called" << std::endl;
-	*this = src; 
+	for (int i = 0; i < 100; i++)
+		this->ideas[i] = src.ideas[i]; 
 }
 
 // DESTRUCTOR
@@ -38,4 +39,14 @@ Brain& Brain::operator=(const Brain &rhs)
 {
 	*this->ideas = *rhs.ideas;
 	return (*this);
+}
+
+std::string	Brain::getIdeas(int i) const
+{
+	return (ideas[i]);
+}
+
+void	Brain::setIdeas(std::string src, int i)
+{
+	this->ideas[i] = src;
 }

@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 20:15:01 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/11 16:40:46 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/15 16:40:17 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ class Dog : public Animal
 		Dog&		operator=(const Dog &rhs);
 		std::string	getType(void) const;
 		void		makeSound() const;
+		void		getIdeas(int i) const;
+		void		setIdeas(std::string str, int i);
 
 		protected:
 			std::string type;

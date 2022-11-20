@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:45:10 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/17 17:30:13 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/20 17:21:24 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
+#include "Form.hpp"
 class Bureaucrat
 {
 	public:
@@ -27,6 +28,8 @@ class Bureaucrat
 		unsigned int		getGrade() const;
 		void				bePromoted();
 		void				beRetrograded();
+		void				signForm(const class Form &form) const;
+		void				executeForm(Form const &Form) const;
 		
 		class GradeTooHighException
 		{
@@ -45,7 +48,16 @@ class Bureaucrat
 					std::cout << "Grade too low" << std::endl;
 				}
 		};
-
+		
+		class FailedToExecuteForm
+		{
+			public:
+				virtual void what() const throw()
+				{
+					std::cout << "Bureaucrat failed to execute form";
+				}
+		};
+		
 	private:
 		const std::string _name;
 		unsigned int	  _grade;

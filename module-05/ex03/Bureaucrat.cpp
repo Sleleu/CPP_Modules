@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:49:40 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/18 17:27:05 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/20 21:50:52 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,41 @@ void	Bureaucrat::signForm(const class Form &form) const
 	{
 		std::cout << this->getName() << " couldn't sign " << form.getName() << " because : ";
 		e.what();
+	}
+}
+
+void	Bureaucrat::executeForm(Form const &form) const
+{
+	try
+	{
+		if (this->getGrade() <= form.getExecGrade() && form.getSigned() == true)
+			{
+				std::cout << this->getName() << " executed " << form.getName() << std::endl;
+				form.execute(*this);
+			}
+		else
+			throw FailedToExecuteForm();
+	}
+	catch (Bureaucrat::FailedToExecuteForm &e)
+	{
+		e.what();
+		std::cout << ", reason : ";
+		try
+		{
+			if (this->getGrade() > form.getExecGrade())
+				throw GradeTooLowException();
+			else if (form.getSigned() == false)
+				std::cout << "form is not signed" << std::endl;
+			else
+				throw GradeTooHighException();
+		}
+		catch (Bureaucrat::GradeTooLowException &e)
+		{
+			e.what();
+		}
+		catch (Bureaucrat::GradeTooHighException &e)
+		{
+			e.what();
+		}
 	}
 }

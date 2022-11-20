@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:57:11 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/18 17:22:44 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/20 21:10:18 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,18 @@ class Form
 		Form();
 		Form(const Form &src);
 		Form(const std::string name, const unsigned int sign_grade, const unsigned int exec_grade);
-		~Form();
+		virtual ~Form();
 		
 		Form& 				operator=(const Form &rhs);
 		
-		void				beSigned(const class Bureaucrat &rhs);
+		virtual void				beSigned(const class Bureaucrat &rhs);
 		
-		const std::string	getName(void) const;
-		bool				getSigned(void) const;
-		unsigned int		getSignGrade(void) const;
-		unsigned int		getExecGrade(void) const;
-		
+		virtual const std::string	getName(void) const;
+		virtual bool				getSigned(void) const;
+		virtual unsigned int		getSignGrade(void) const;
+		virtual unsigned int		getExecGrade(void) const;	
+		virtual void				execute(Bureaucrat const &executor) const;
+		virtual void				exec_form(void) const = 0;	
 		
 		class GradeTooHighException
 		{
@@ -53,9 +54,18 @@ class Form
 				}
 		};
 
+		class UnableToExecuteForm
+		{
+			public:
+				virtual void what() const throw()
+				{
+					std::cout << "Unable to execute this form" << std::endl;
+				}
+		};
+
 	private:
-		const std::string	_name;
-		bool				_signed;
+		const std::string		_name;
+		bool					_signed;
 		const unsigned int		_sign_grade;
 		const unsigned int		_exec_grade;
 };

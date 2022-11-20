@@ -6,46 +6,54 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:44:59 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/18 17:26:17 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/20 19:48:51 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberryCreationForm.hpp"
 #include "Form.hpp"
 
 int	main(void)
 {
-	Bureaucrat t("Thierry godmod", 0);
+	Bureaucrat t("Thierry godmod", 5);
 	Bureaucrat r("Richard le patron", 1);
+	Bureaucrat c("CSP+", 26);
+	Bureaucrat l("Laurent le concierge", 150);
+
+	PresidentialPardonForm fiche = PresidentialPardonForm("fiche", "Sylvain");
+	std::cout << fiche << std::endl;
+	fiche.execute(r);
+	fiche.beSigned(c);
+	c.bePromoted();
+	fiche.beSigned(c);
 	
-	std::cout << t << std::endl;
-	t.bePromoted();
-	std::cout << t << std::endl;
-
-	std::cout << r << std::endl;
-	r.beRetrograded();
-	std::cout << r << std::endl;
-
-	Bureaucrat l("Laurent le concierge", 2500);
-	std::cout << l << std::endl;
-	l.bePromoted();
-	std::cout << l << std::endl;
-	l.beRetrograded();
-	l.beRetrograded();
-	std::cout << l << std::endl;
-
-	std::cout << std::endl << std::endl << "FORM TEST" << std::endl;
-	Form fiche("fiche", 148, 148);
+	// after sign
 	std::cout << fiche << std::endl;
+	std::cout << t << std::endl;
+	fiche.execute(t);
+	t.beRetrograded();
+	std::cout << t << std::endl;
+	fiche.execute(t);
 
-	fiche.beSigned(l);
-	l.bePromoted();
-	l.bePromoted();
-	fiche.beSigned(l);
-	std::cout << fiche << std::endl;
-	l.beRetrograded();
-	r.signForm(fiche);
-	l.signForm(fiche);
+	l.executeForm(fiche);
 
+	RobotomyRequestForm f2("fiche 2", "Michel"); 
+	std::cout << f2 << std::endl;
+	f2.beSigned(r);
+	c.executeForm(f2);
+	std::cout << f2 << std::endl;
+
+	ShrubberryCreationForm f3("Schrub", "Robert");
+	
+	//FAIL TEST
+	// Bureaucrat test("test", 138);
+	// f3.beSigned(test);
+	// test.executeForm(f3);
+	// std::cout << f3 << std::endl;	
+	
+ 
 	return (0);
 }

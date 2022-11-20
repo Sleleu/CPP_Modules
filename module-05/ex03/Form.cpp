@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:33:56 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/18 17:25:00 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/20 21:49:30 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	Form::beSigned(const class Bureaucrat &rhs)
 {
 	try
 	{
-		if (rhs.getGrade() <= this->_exec_grade)
+		if (rhs.getGrade() <= this->_sign_grade)
 			this->_signed = true;
 		else if (rhs.getGrade() < 1)
 			throw Form::GradeTooHighException();
@@ -87,28 +87,22 @@ void	Form::beSigned(const class Bureaucrat &rhs)
 	}
 }
 
-// void	Form::signForm(Bureaucrat &rhs)
-// {
-// 	try
-// 	{
-// 		if (this->_signed == true && rhs.getGrade() <= this->_sign_grade)
-// 			std::cout << rhs.getName() << " signed " << this->getName() << std::endl;
-// 		else if (rhs.getGrade() < 1)
-// 			throw Form::GradeTooHighException();
-// 		else
-// 			throw Form::GradeTooLowException();
-// 	}
-// 	catch (Form::GradeTooLowException &e)
-// 	{
-// 		std::cout << rhs.getName() << " couldn't sign " << this->getName() << " because : ";
-// 		e.what();
-// 	}
-// 	catch (Form::GradeTooHighException &e)
-// 	{
-// 		std::cout << rhs.getName() << " couldn't sign " << this->getName() << " because : ";
-// 		e.what();
-// 	}
-// }
+void	Form::execute(Bureaucrat const &executor) const
+{
+	try
+	{
+		if (executor.getGrade() <= this->getExecGrade() && this->getSigned() == true)
+		{
+			exec_form();
+		}
+		else
+			throw Form::UnableToExecuteForm();
+	}
+	catch (Form::UnableToExecuteForm &e)
+	{
+		e.what();
+	}
+}
 
 // Getters / setters
 

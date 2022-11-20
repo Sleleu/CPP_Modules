@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:52:42 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/20 21:20:39 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/20 21:58:16 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,9 @@ class Intern
 		Intern& operator=(const Intern &rhs);
 		Form*	makeForm(std::string name, std::string target);
 
-		class ErrorForm
+		class UnknownFormException : public std::exception
 		{
-				virtual const char* what() const throw()
-				{
-					return ("YOOOOOO");
-				}
+				virtual const char* what() const throw();
 		};
 		
 };

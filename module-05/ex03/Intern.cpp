@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 19:57:40 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/20 21:48:02 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/20 22:06:35 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,6 @@ Intern&	Intern::operator=(const Intern &rhs)
 }
 
 // Member function
-
-// const char* Intern::ErrorForm::what() const throw()
-// {
-// 	return ("InterException: Form Not Found!");
-// }
 
 Form*	Intern::makeForm(std::string name, std::string target)
 {

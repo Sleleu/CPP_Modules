@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:44:59 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/20 19:48:51 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/11/20 22:21:16 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 {
 	Bureaucrat t("Thierry godmod", 5);
 	Bureaucrat r("Richard le patron", 1);
-	Bureaucrat c("CSP+", 26);
+	Bureaucrat c("CSP++", 26);
 	Bureaucrat l("Laurent le concierge", 150);
 
 	PresidentialPardonForm fiche = PresidentialPardonForm("fiche", "Sylvain");
@@ -54,6 +54,9 @@ int	main(void)
 	// test.executeForm(f3);
 	// std::cout << f3 << std::endl;	
 	
+	std::cout << f3 << std::endl;
+	f3.beSigned(r);
+	r.executeForm(f3);
  
 	return (0);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sleleu <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 17:22:54 by sleleu            #+#    #+#              #
-#    Updated: 2022/12/02 03:50:11 by sleleu           ###   ########.fr        #
+#    Updated: 2022/12/02 17:42:20 by sleleu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = convert
 
 SRC = main.cpp \
 	  convert.cpp \
+	  display.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

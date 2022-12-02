@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleleu <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:26:13 by sleleu            #+#    #+#             */
-/*   Updated: 2022/12/02 03:51:45 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/12/02 18:37:26 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "convert.hpp"
+
+bool	is_char(std::string str)
+{
+	if (str.size() > 1)
+		return (false);
+	return (true);
+}
 
 bool	is_int(char *str)
 {
@@ -26,10 +33,11 @@ bool	is_int(char *str)
     return (true);
 }
 
-bool	is_float(char *s)
+bool	is_float(std::string str)
 {
-	std::string str = s;
-
+	for (int i = 0; str[i]; i++)
+		if (!isdigit(str[i]) && str[i] != '.' && str[i] != 'f')
+			return (false);
 	if (str.find('.') == std::string::npos || str.find('f') == std::string::npos)
 		return (false);
 	else if (str.find('.') == 0 || str.find('.') == str.size() - 1 || str.find('f') != str.size() - 1)
@@ -39,10 +47,11 @@ bool	is_float(char *s)
 	return (true);
 }
 
-bool	is_double(char *s)
+bool	is_double(std::string str)
 {
-	std::string str = s;
-
+	for (int i = 0; str[i]; i++)
+		if (!isdigit(str[i]) && str[i] != '.')
+			return (false);
 	if (str.find('.') == std::string::npos || str.find('.') == 0
 		|| str.find('.') == str.size() - 1)
 		return (false);
@@ -51,31 +60,30 @@ bool	is_double(char *s)
 	return (true);
 }
 
-int main(int argc, char **argv)
+void	check_inf(std::string str)
 {
-    if (argc != 2)
-        return (1);
-    try
-    {
-        if (is_int(argv[1]))
-            convert_int(atoi(argv[1]));
-		else if (is_float(argv[1]))
-			convert_float(atof(argv[1]));
-		else
-			convert_double(strtod(argv[1], NULL));
-            
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Error" << std::endl;
-        e.what();
-    }
-    // int x = std::atoi(argv[1]);
-	//float x = std::numeric_limits<float>::infinity();
-
-    return (0);
+	if (!str.compare("+inf") || !str.compare("-inf") || !str.compare("+inff")
+		|| !str.compare("-inff") || !str.compare("inf") || !str.compare("inff"))
+		display_inf(str);
+	else if (!str.compare("nan") || !str.compare("nanf"))
+		display_nan();
 }
 
-// strtol
-// atoi / atol
-// strtod
+int main(int argc, char **argv)
+{
+	if (argc != 2)
+		exit (1);
+	std::string str = argv[1];
+	check_inf(str);
+	if (is_int(argv[1]))
+		convert_int(atoi(argv[1]));
+	else if	(is_char(argv[1]))
+		convert_char(argv[1][0]);
+	else if (is_float(argv[1]))
+		convert_float(std::atof(argv[1]));
+	else if (is_double(argv[1]))
+		convert_double(std::atof(argv[1]));
+	else
+		std::cout << "Error" << std::endl;
+    return (0);
+}

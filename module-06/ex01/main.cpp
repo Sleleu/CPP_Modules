@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scalar.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sleleu <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 17:39:06 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/23 17:40:31 by sleleu           ###   ########.fr       */
+/*   Created: 2022/12/02 02:03:47 by sleleu            #+#    #+#             */
+/*   Updated: 2022/12/02 02:04:33 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-class Scalar
+#include <iostream>
+
+int	main(int argc, char **argv)
 {
-    public:
-        Scalar();
-        Scalar(const Scalar &src);
-        ~Scalar();
-    
-        
-        void    is_int(char str);
-};
+	
+	return (0);
+}

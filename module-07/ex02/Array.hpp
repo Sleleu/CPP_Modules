@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 20:57:59 by sleleu            #+#    #+#             */
-/*   Updated: 2022/12/06 21:07:07 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/12/06 21:26:19 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,13 @@ class Array
 		T *_array;
 
 	public:
-	
+
 		Array();
-		Array(const Array &src);
+		Array(const Array<T> &src);
 		Array(unsigned int n);
 		~Array();
+
+		Array<T>&	operator=(const Array<T> &rhs);	
 };
 
 #endif

@@ -36,7 +36,7 @@ bool	is_int(char *str)
 bool	is_float(std::string str)
 {
 	for (int i = 0; str[i]; i++)
-		if (!isdigit(str[i]) && str[i] != '.' && str[i] != 'f')
+		if (!isdigit(str[i]) && str[i] != '.' && str[i] != 'f' && str[0] != '-')
 			return (false);
 	if (str.find('.') == std::string::npos || str.find('f') == std::string::npos)
 		return (false);
@@ -50,7 +50,7 @@ bool	is_float(std::string str)
 bool	is_double(std::string str)
 {
 	for (int i = 0; str[i]; i++)
-		if (!isdigit(str[i]) && str[i] != '.')
+		if (!isdigit(str[i]) && str[i] != '.' && str[0] != '-')
 			return (false);
 	if (str.find('.') == std::string::npos || str.find('.') == 0
 		|| str.find('.') == str.size() - 1)

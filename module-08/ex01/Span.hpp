@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 23:34:53 by sleleu            #+#    #+#             */
-/*   Updated: 2022/12/12 14:48:03 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/12/12 20:51:20 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 #include <exception>
 #include <climits>
 #include <ctime>
+
+#ifndef SPAN_HPP
+# define SPAN_HPP
 
 class Span
 {
@@ -59,3 +62,5 @@ class Span
 		std::vector<int>	_vector;
 		unsigned int		_max;
 };
+
+#endif

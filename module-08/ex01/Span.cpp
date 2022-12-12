@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:34:50 by sleleu            #+#    #+#             */
-/*   Updated: 2022/12/12 14:50:13 by sleleu           ###   ########.fr       */
+/*   Updated: 2022/12/12 15:22:29 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Span::Span()
 {
 	std::cout << "Default constructor called" << std::endl;
-	
+	this->_max = 0;
 }
 
 Span::Span(unsigned int nb_max)
@@ -98,6 +98,5 @@ Span&	Span::operator=(const Span &rhs)
 {
 	this->_max = rhs._max;
 	this->_vector = rhs._vector;
-
 	return (*this);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 20:09:19 by sleleu            #+#    #+#             */
-/*   Updated: 2023/03/15 20:09:22 by sleleu           ###   ########.fr       */
+/*   Updated: 2023/03/15 23:58:19 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,8 +153,5 @@ BitcoinExchange::map_iterator	BitcoinExchange::nearest_key(std::string& key)
 	if (it != _database.end())
 		return (it);
 	it = _database.lower_bound(key);
-	if (key.compare(it->first) > 0 || it == _database.begin() || it == _database.end())
-		return (it);
-	else
-		return  (--it);
+	return (it == _database.begin() || it == _database.end() ? it : --it);
 }

@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 20:09:19 by sleleu            #+#    #+#             */
-/*   Updated: 2023/03/15 23:58:19 by seb              ###   ########.fr       */
+/*   Updated: 2023/03/24 13:28:34 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
+const char* BitcoinExchange::parse_exception::what() { return (_message.c_str()); }
+ssize_t BitcoinExchange::parse_exception::line() { return (_line); }
 BitcoinExchange::BitcoinExchange() {}
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& src) { *this = src; }
 BitcoinExchange::~BitcoinExchange() {}
@@ -92,7 +94,6 @@ void	BitcoinExchange::parse_input(std::string input)
 {
 	std::ifstream	input_file;
 	std::string		buffer;
-	std::string		current_date;
 	
 	input_file.open(input.c_str());
 	if (input_file.is_open() == false)
@@ -101,49 +102,35 @@ void	BitcoinExchange::parse_input(std::string input)
 	if (buffer.compare("date | value"))
 		throw parse_exception("Invalid file format, expected at first line : \"date | value\"", 1);
 	for (size_t i = 0; std::getline(input_file, buffer); i++)
-	{
-		current_date.assign(buffer, 0, 10);
-		if (!parse_date(current_date))
-			std::cout << RED << "Error: bad input => " << YELLOW << current_date << RESET << std::endl;
-		else
-		{
-			std::string value(buffer.begin() + 10, buffer.end());
-			if (value.compare(0, 3, " | "))
-				std::cout << RED << "Error: bad line format " << RESET << std::endl;
-			else
-				do_exchange(current_date, value);
-		}
-	}
+		try { do_exchange(buffer); }
+		catch (parse_exception &e) { std::cerr << RED << e.what() << RESET << std::endl; }
 }
 
-void	BitcoinExchange::do_exchange(std::string current_date, std::string value)
-{	
-	double d_value;
-	double exchange_rate;
+void	BitcoinExchange::do_exchange(std::string buffer)
+{
+	std::string		current_date;
 
+	current_date = current_date.assign(buffer, 0, 10);
+	if (!parse_date(current_date))
+		throw parse_exception("Error: bad input => " + current_date);
+	std::string value(buffer.begin() + 10, buffer.end());
+	if (value.compare(0, 3, " | "))
+		throw parse_exception("Error: bad line format ");
 	value.erase(0, 3);
-	d_value = atof(value.c_str());
-	if (d_value < 0 || d_value > 1000)
-	{
-		d_value < 0 ? std::cout << RED << "Error: not a positive number.\n" << RESET :
-					  std::cout << RED << "Error: too large a number.\n" << RESET ;
-		return ;
-	}
-	if (!parse_value(value))
-	{
-		std::cout << RED << "Error: bad line format " << RESET << std::endl;
-		return ;
-	}
+	double d_value = atof(value.c_str());
 	map_iterator it = nearest_key(current_date);
+	if (d_value < 0)
+		throw parse_exception("Error: not a positive number.");
+	if (d_value > 1000)
+		throw parse_exception("Error: too large a number.");
+	if (!parse_value(value))
+		throw parse_exception("Error: bad line format");
 	if (it == _database.end())
-	{
-		std::cout << RED << "Error: too recent date to output bitcoin value.\n" << RESET;
-		return ;
-	}
-	exchange_rate = it->second;
+		throw parse_exception("Error: too recent date to output bitcoin value.");	
+	double exchange_rate = it->second;
 	double result = exchange_rate * d_value;
 	std::cout << CYAN << current_date << " => " << MAGENTA << value <<
-				 CYAN << " = " << GREEN << result << RESET << std::endl;
+			 CYAN << " = " << GREEN << result << RESET << std::endl;
 }
 
 BitcoinExchange::map_iterator	BitcoinExchange::nearest_key(std::string& key)

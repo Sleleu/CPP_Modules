@@ -6,12 +6,14 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 21:06:56 by sleleu            #+#    #+#             */
-/*   Updated: 2023/03/15 21:06:58 by sleleu           ###   ########.fr       */
+/*   Updated: 2023/03/24 13:24:00 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
+const char* PmergeMe::parse_exception::what() { return (_message.c_str()); }
+ssize_t PmergeMe::parse_exception::token() { return (_token); }
 PmergeMe::PmergeMe(void) {}
 PmergeMe::PmergeMe(const PmergeMe& src) { (*this = src); }
 PmergeMe::~PmergeMe(void) {}

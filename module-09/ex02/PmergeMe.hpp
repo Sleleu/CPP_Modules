@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 21:07:03 by sleleu            #+#    #+#             */
-/*   Updated: 2023/03/15 21:07:05 by sleleu           ###   ########.fr       */
+/*   Updated: 2023/03/24 12:33:49 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,8 @@ class PmergeMe
     {
         public:
             parse_exception(const std::string& message, ssize_t token) : _message(message), _token(token) {}
-        const char* what()
-        {
-            return (_message.c_str());
-        }
-		ssize_t token()
-		{
-			return (_token);
-		}
+        const char* what();
+		ssize_t token();
         private:
             std::string _message;
 			ssize_t		_token;

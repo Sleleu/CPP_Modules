@@ -6,7 +6,7 @@
 /*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 17:10:56 by sleleu            #+#    #+#             */
-/*   Updated: 2023/03/15 20:09:34 by sleleu           ###   ########.fr       */
+/*   Updated: 2023/03/24 13:07:57 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ class BitcoinExchange
 	void			parse_input(std::string input);
 	bool			parse_date(std::string date);
 	bool			parse_value(std::string value);
-	void			do_exchange(std::string current_date, std::string value);
+	void			do_exchange(std::string buffer);
 	map_iterator	nearest_key(std::string& key);
 
     class parse_exception
@@ -52,14 +52,8 @@ class BitcoinExchange
         public:
             parse_exception(const std::string& message, ssize_t line) : _message(message), _line(line) {}
 			parse_exception(const std::string& message) : _message(message), _line(-1) {}
-        const char* what()
-        {
-            return (_message.c_str());
-        }
-		ssize_t line()
-		{
-			return (_line);
-		}
+        const char* what();
+		ssize_t line();
         private:
             std::string _message;
 			ssize_t		_line;

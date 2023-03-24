@@ -23,10 +23,8 @@ PmergeMe::PmergeMe(char **tokens)
 	for (size_t i = 0; tokens[i]; i++)
     {
         parse_arg(tokens[i], i + 1);
-		if (std::find(_vector.begin(), _vector.end(), atoi(tokens[i])) != _vector.end())
-			throw (parse_exception("Error: Duplicate present in sequence", i + 1));
-		_vector.push_back(atoi(tokens[i]));
-		_deque.push_back(atoi(tokens[i]));
+	_vector.push_back(atoi(tokens[i]));
+	_deque.push_back(atoi(tokens[i]));
     }
 	std::cout << BOLDMAGENTA << "Results with std::vector\n" << RESET YELLOW << "Before: ";
 	double time_vec = display_result(_vector);
